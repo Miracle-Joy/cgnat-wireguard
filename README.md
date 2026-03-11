@@ -26,11 +26,11 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common git netcat-openbsd
 
 # Instalar Docker
-curl -fsSL [https://get.docker.com](https://get.docker.com) | sh
+curl -fsSL https://get.docker.com | sh
 sudo usermod -aG docker $USER
 
 # Instalar Docker Compose v2
-sudo curl -L "[https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname](https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname) -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 ### 2. Clonación de Repositorio
