@@ -56,6 +56,7 @@ sudo ufw enable
 Genera la estructura de carpetas requerida ejecutando el script de preparación:
 ```bash
 sudo ./setup-wireguard-tunnel.sh
+sudo ./fix-vpn-routing.sh
 ```
 ### 3.3 LEVANTAR EL CONTENEDOR ⚠️
 
