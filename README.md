@@ -122,36 +122,9 @@ sudo reboot
 ### 🛠️ Notas de Mantenimiento
 
 A continuación se detallan los puntos clave para asegurar el funcionamiento del túnel:
-
-[ ] Verificar que el archivo fix-vpn-routing.sh tenga permisos de ejecución (chmod +x).
-
-[ ] Comprobar que el puerto 51820/udp esté abierto en el panel de control de tu proveedor de VPS.
-
-📋 Direcciones de Red
-
-Recurso
-
-Dirección IP
-
-Descripción
-
-Gateway VPN
-
-10.69.69.1
-
-IP del VPS dentro del túnel.
-
-Cliente Local
-
-10.69.69.2
-
-IP reservada para el router o dispositivo local.
-
-Rango Local
-
-192.168.50.0/24
-
-Red detrás del CGNAT (ejemplo).
-
+```
+[x]Verificar que el archivo fix-vpn-routing.sh tenga permisos de ejecución (chmod +x).
+[x]Comprobar que el puerto 51820/udp esté abierto en el panel de control de tu proveedor de VPS.
+```
 >[!TIP]
 Si el túnel no levanta, revisa los logs del contenedor con docker logs wireguard.
