@@ -2,12 +2,20 @@
 
 Esta guía detalla los pasos técnicos para configurar un VPS como túnel seguro, permitiendo el acceso a una red local que se encuentra detrás de un CGNAT. Esto permite exponer servicios locales al internet de forma segura.
 
+## 🛠️ Requisitos
+Antes de comenzar, asegúrate de contar con lo siguiente:
+1. VPS: Una instancia virtual (ej. IONOS, la más sencilla es suficiente).
+2. Router: Un router compatible con WireGuard (ej. ASUS RT-AX82U V2 con firmware Merlin).
+3. Dominio: Un dominio propio (ej. Namecheap) con los DNS gestionados en Cloudflare.
+4. Paciencia: El proceso requiere atención a los detalles técnicos.
+
 ### 📑 Tabla de Contenidos
 
 * [1. Instalación de Docker y Herramientas](#1-instalación-de-docker-y-herramientas)
 * [2. Clonación de Repositorio](#2-clonación-de-repositorio)
 * [3. Instalación de WireGuard](#3-instalación-de-wireguard)
 * [4. Ruta Estática Persistente](#4-ruta-estática-persistente)
+* [5. Instalacion de Nginx Proxy Manager](#5-instalacion-de-nginx-proxy-manager)
 
 ### 1. Instalación de Docker y Herramientas
 
@@ -111,12 +119,21 @@ WantedBy=multi-user.target
 Activar el servicio y reiniciar el servidor:
 ```bash
 #recargar todos los archivos de configuración
-
 sudo systemctl daemon-reload && sudo systemctl enable --now route-50.service
 
 # Reinicia el servidor
-
 sudo reboot
+```
+### Ping red Local y Tunnel
+
+```bash
+#Coloca tus ips
+ping -c 4 192.168.50.1
+ping -c 4 10.69.69.1
+
+#Ping dentro del contenedor
+sudo docker exec wireguard ping -c 4 192.168.50.1
+sudo docker exec wireguard ping -c 4 10.69.69.1
 ```
 
 ### 🛠️ Notas de Mantenimiento
@@ -134,6 +151,26 @@ A continuación se detallan los puntos clave para asegurar el funcionamiento del
 | Gateway VPN | 10.69.69.1 | IP del VPS dentro del túnel. |
 | Cliente Local | 10.69.69.2 | IP reservada para el router o dispositivo local. |
 | Rango Local | 192.168.50.0/24 | Red detrás del CGNAT (ejemplo). |
+
+### Instalacion de Ngnix Proxy Manager
+
+Ingresa a la siguiente ubicacion:
+
+```bash
+cd cgnat-wireguard/nginx
+
+#Levanta el contenedor
+docker-compose up -d
+```
+### Probar respuesta 
+```bash
+#Entrar en NGNIX DESDE CONSOLA 
+docker exec -it nginx-proxy-manager bash
+#Ejemplo
+curl -I http://192.168.50.1:80
+```
+
+<img width="894" height="391" alt="image" src="https://github.com/user-attachments/assets/374461cb-52df-4389-a9b2-61d6f12c2d84" />
 
 >[!TIP]
 Si el túnel no levanta, revisa los logs del contenedor con docker logs wireguard.
