@@ -1,11 +1,15 @@
-version: '3.8'
 services:
   app:
     image: 'jc21/nginx-proxy-manager:latest'
     container_name: nginx-proxy-manager
     restart: unless-stopped
-    # CRÍTICO: Usa la red del host para heredar las rutas de la VPN
+    # ESTO ES LO QUE TE PERMITE VER LA IP 10.69.69.1
     network_mode: host
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
