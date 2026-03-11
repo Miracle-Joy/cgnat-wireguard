@@ -5,9 +5,9 @@ Esta guía detalla los pasos técnicos para configurar un VPS como túnel seguro
 ### 📑 Tabla de Contenidos
 
 * [1. Instalación de Docker y Herramientas](#1-instalación-de-docker-y-herramientas)
-- Clonación de Repositorio
-- Instalación de WireGuard
-- Ruta Estática Persistente (Systemd)
+* [2. Clonación de Repositorio](#2-clonacion-de-repositorio)
+* [3. Instalación de WireGuard](#3-instalacion-de-wireguard)
+* [4. Ruta Estática Persistente (Systemd)](#4-ruta-estatica-persistente-(systemd))
 
 ### 1. Instalación de Docker y Herramientas
 
@@ -25,14 +25,14 @@ sudo usermod -aG docker $USER
 sudo curl -L "[https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname](https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname) -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
-## 2. Clonación de Repositorio
+### 2. Clonación de Repositorio
 
 Obtén los scripts y archivos de configuración necesarios directamente en tu servidor.
 ```bash
 git clone https://github.com/Miracle-Joy/cgnat-wireguard.git
 cd cgnat-wireguard/vps
 ```
-## 3. Instalación de WireGuard
+### 3. Instalación de WireGuard
 
 ### 3.1 Preparación y Firewall
 
@@ -87,7 +87,7 @@ Reiniciar para aplicar cambios:
 docker-compose restart wireguard
 ```
 
-## 4. Ruta Estática Persistente (Systemd)
+### 4. Ruta Estática Persistente (Systemd)
 
 Configura un servicio de sistema para asegurar que las rutas de red se mantengan activas tras reiniciar el VPS.
 ```bash
