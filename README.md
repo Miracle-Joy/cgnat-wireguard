@@ -1,11 +1,11 @@
-# 🚀 Salto de CGNAT con WireGuard y Nginx Proxy Manager
+# 🚀 Túnel CGNAT: WireGuard + NPM (Router ASUS)
 
-Esta guía detalla los pasos técnicos para configurar un VPS como túnel seguro, permitiendo el acceso a una red local que se encuentra detrás de un CGNAT. Esto permite exponer servicios locales al internet de forma segura.
+Esta documentación detalla los pasos para configurar una VPS como túnel seguro hacia una red local tras CGNAT, utilizando un repositorio personalizado y un router ASUS.
 
 ## 🛠️ Requisitos
 Antes de comenzar, asegúrate de contar con lo siguiente:
 1. VPS: Una instancia virtual (ej. IONOS, la más sencilla es suficiente).
-2. Router: Un router compatible con WireGuard (ej. ASUS RT-AX82U V2 con firmware Merlin).
+2. Router: Un router compatible con WireGuard (ej. ASUS RT-AX82U V2 con firmware Merlin en modo puente).
 3. Dominio: Un dominio propio (ej. Namecheap) con los DNS gestionados en Cloudflare.
 4. Paciencia: El proceso requiere atención a los detalles técnicos.
 
