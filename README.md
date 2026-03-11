@@ -16,7 +16,7 @@ Antes de comenzar, asegúrate de contar con lo siguiente:
 * [3. Instalación de WireGuard y Configuracion](#3-instalación-de-wireguard-y-configuracion)
 * [4. Ruta Estática Persistente](#4-ruta-estática-persistente)
 * [5. Instalacion de Nginx Proxy Manager](#5-instalacion-de-nginx-proxy-manager)
-* [6. Importacion de archivo .conf en Router](#6=importacion-de-archivo-.conf-en-router)
+* [6. Importacion de archivo conf en Router](#6=importacion-de-archivo-conf-en-router)
 
 ### 1. Instalación de Docker y Herramientas
 
