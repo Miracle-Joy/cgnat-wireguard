@@ -7,7 +7,7 @@ Esta guía detalla los pasos técnicos para configurar un VPS como túnel seguro
 * [1. Instalación de Docker y Herramientas](#1-instalación-de-docker-y-herramientas)
 * [2. Clonación de Repositorio](#2-clonación-de-repositorio)
 * [3. Instalación de WireGuard](#3-instalación-de-wireguard)
-* [4. Ruta Estática Persistente (Systemd)](#4-ruta-estática-persistente-(systemd))
+* [4. Ruta Estática Persistente](#4-ruta-estática-persistente)
 
 ### 1. Instalación de Docker y Herramientas
 
@@ -87,7 +87,7 @@ Reiniciar para aplicar cambios:
 docker-compose restart wireguard
 ```
 
-### 4. Ruta Estática Persistente (Systemd)
+### 4. Ruta Estática Persistente
 
 Configura un servicio de sistema para asegurar que las rutas de red se mantengan activas tras reiniciar el VPS.
 ```bash
