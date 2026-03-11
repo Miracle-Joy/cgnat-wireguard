@@ -4,12 +4,12 @@ Esta guía detalla los pasos técnicos para configurar un VPS como túnel seguro
 
 ### 📑 Tabla de Contenidos
 
-- Instalación de Docker y Herramientas
+* [1. Instalación de Docker y Herramientas](#1-instalación-de-docker-y-herramientas)
 - Clonación de Repositorio
 - Instalación de WireGuard
 - Ruta Estática Persistente (Systemd)
 
-## 1. Instalación de Docker y Herramientas
+### 1. Instalación de Docker y Herramientas
 
 Prepara el sistema actualizando los paquetes e instalando el motor de Docker y las utilidades necesarias.
 ```bash
@@ -126,5 +126,14 @@ A continuación se detallan los puntos clave para asegurar el funcionamiento del
 [x]Verificar que el archivo fix-vpn-routing.sh tenga permisos de ejecución (chmod +x).
 [x]Comprobar que el puerto 51820/udp esté abierto en el panel de control de tu proveedor de VPS.
 ```
+
+## 📋 Direcciones de Red
+
+| Recurso | Dirección IP | Descripción |
+| :--- | :--- | :--- |
+| Gateway VPN | 10.69.69.1 | IP del VPS dentro del túnel. |
+| Cliente Local | 10.69.69.2 | IP reservada para el router o dispositivo local. |
+| Rango Local | 192.168.50.0/24 | Red detrás del CGNAT (ejemplo). |
+
 >[!TIP]
 Si el túnel no levanta, revisa los logs del contenedor con docker logs wireguard.
