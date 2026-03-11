@@ -1,6 +1,6 @@
 # 🚀 Túnel CGNAT: WireGuard + NPM (Router ASUS)
 
-Esta documentación detalla los pasos para configurar una VPS como túnel seguro hacia una red local tras CGNAT, utilizando un repositorio personalizado y un router ASUS.
+Esta documentación detalla los pasos para configurar una VPS como túnel seguro hacia una red local tras CGNAT, utilizando un repositorio en router ASUS sin tener que contratar una IP PUBLICA solo necesita llamar a su operador para que le de la contraña de administrador de su modem para que su router asus administre la red.
 
 ## 🛠️ Requisitos
 Antes de comenzar, asegúrate de contar con lo siguiente:
