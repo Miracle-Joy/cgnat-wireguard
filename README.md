@@ -13,9 +13,10 @@ Antes de comenzar, asegúrate de contar con lo siguiente:
 
 * [1. Instalación de Docker y Herramientas](#1-instalación-de-docker-y-herramientas)
 * [2. Clonación de Repositorio](#2-clonación-de-repositorio)
-* [3. Instalación de WireGuard](#3-instalación-de-wireguard)
+* [3. Instalación de WireGuard y Configuracion](#3-instalación-de-wireguard-y-configuracion)
 * [4. Ruta Estática Persistente](#4-ruta-estática-persistente)
 * [5. Instalacion de Nginx Proxy Manager](#5-instalacion-de-nginx-proxy-manager)
+* [6. Importacion de archivo .conf en Router](#6=importacion-de-archivo-.conf-en-router)
 
 ### 1. Instalación de Docker y Herramientas
 
@@ -40,7 +41,7 @@ Obtén los scripts y archivos de configuración necesarios directamente en tu se
 git clone https://github.com/Miracle-Joy/cgnat-wireguard.git
 cd cgnat-wireguard/vps
 ```
-### 3. Instalación de WireGuard
+### 3. Instalación de WireGuard y Configuracion
 
 ### 3.1 Preparación y Firewall
 
@@ -48,6 +49,7 @@ Configura los permisos de los scripts y abre el puerto UDP necesario para la VPN
 ```bash
 sudo chmod +x setup-wireguard-tunnel.sh
 sudo chmod +x fix-vpn-routing.sh
+#No es necesario habilitar el firewall
 sudo ufw allow 51820/udp
 sudo ufw enable
 ```
@@ -93,6 +95,50 @@ nano config/wg_confs/wg0.conf
 Reiniciar para aplicar cambios:
 ```bash
 docker-compose restart wireguard
+```
+### 3.6 Configuracion a Router
+```bash
+#Ingresa a la siguiente ruta y copialo
+cat cgnat-wireguard/vps/config/peer1/peer1.conf
+```
+Esto lo pegan en archivo de texto y cambia la extension .txt a .conf el archivo nodebe llevar <> ni ""
+```bash
+#Ejemplo de como se ve:
+[Interface]
+Address = 10.69.69.2/24
+PrivateKey = <Private Key Asus>
+ListenPort = 51820
+DNS = 10.69.69.1
+
+[Peer]
+PublicKey = "Este viene PublicKey no mover"
+PresharedKey = "Este viene PresharedKey no mover" 
+Endpoint = <ip de tu vps>:51820
+AllowedIPs = 0.0.0.0/0, 192.168.50.0/24
+```
+### 3.7 Importar archivo al Router
+Ingresa a tu router y ve al apartado VPN y selecciona Cliente VPN.
+1. En Client control Preciona choose File y Cargar
+2. En Network Habilitar NAT -> SI, Inbound Firewall => Allow, Killswitch -> No
+
+<img width="754" height="481" alt="image" src="https://github.com/user-attachments/assets/9ae3c8d3-8fff-4094-8d27-3022f12470ac" />
+
+### 3.8 Clientes dentro de la VPN
+Ve al apartado VPN Director y baja a Add new rule y preciona el signo de + veras la siguiente imagen e ingresa los datos.
+
+<img width="636" height="359" alt="image" src="https://github.com/user-attachments/assets/498f55fd-9d22-4af6-a008-39067ca5014a" />
+
+Activa la VPN en WireGuard clients status que se encuentra en VPN Director asi debe verse.
+
+<img width="757" height="529" alt="image" src="https://github.com/user-attachments/assets/1c13e5a8-928a-412c-a364-e8020d1e9b6c" />
+
+### 3.9 En otros dispositivos
+En este caso solo basta con copiar ve a cgnat-wireguard/vps/config y selecciona otro peer es uno por cada dispositivo en el docker-compose de wireguard nodifica el "PEERS=4" por el numero que quieras.
+```bash
+#Ingresa a la siguiente ruta y copialo
+cat cgnat-wireguard/vps/config/peer2/peer2.conf
+#De estaforma puedes obtener el QR
+docker exec -it wireguard /app/show-peer 2
 ```
 
 ### 4. Ruta Estática Persistente
@@ -173,4 +219,4 @@ curl -I http://192.168.50.1:80
 <img width="894" height="391" alt="image" src="https://github.com/user-attachments/assets/374461cb-52df-4389-a9b2-61d6f12c2d84" />
 
 >[!TIP]
-Si el túnel no levanta, revisa los logs del contenedor con docker logs wireguard.
+Si el túnel no levanta o Ngnix no funcionan verifiquen las Políticas de firewall de su VPS.
