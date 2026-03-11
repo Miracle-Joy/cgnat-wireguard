@@ -86,7 +86,7 @@ echo "TU_CLAVE_PRIVADA" | wg pubkey
 
 Edita la configuración para enlazar tu dispositivo local al servidor:
 ```bash
-nano config/wg_confs/wg0.conf
+nano wg_confs/wg0.conf
 ```
 > [!IMPORTANT]
 *Acción: Reemplaza el PublicKey de Peer1 por la clave pública generada para tu router.*                              
