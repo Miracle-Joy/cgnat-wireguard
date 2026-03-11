@@ -5,9 +5,9 @@ Esta guía detalla los pasos técnicos para configurar un VPS como túnel seguro
 ### 📑 Tabla de Contenidos
 
 * [1. Instalación de Docker y Herramientas](#1-instalación-de-docker-y-herramientas)
-* [2. Clonación de Repositorio](#2-clonacion-de-repositorio)
-* [3. Instalación de WireGuard](#3-instalacion-de-wireguard)
-* [4. Ruta Estática Persistente (Systemd)](#4-ruta-estatica-persistente-(systemd))
+* [2. Clonación de Repositorio](#2-clonación-de-repositorio)
+* [3. Instalación de WireGuard](#3-instalación-de-wireguard)
+* [4. Ruta Estática Persistente (Systemd)](#4-ruta-estática-persistente-(systemd))
 
 ### 1. Instalación de Docker y Herramientas
 
