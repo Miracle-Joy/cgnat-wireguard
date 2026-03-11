@@ -15,7 +15,7 @@ Antes de comenzar, asegúrate de contar con lo siguiente:
 * [2. Clonación de Repositorio](#2-clonación-de-repositorio)
 * [3. Instalación de WireGuard y Configuracion](#3-instalación-de-wireguard-y-configuracion)
 * [4. Ruta Estática Persistente](#4-ruta-estática-persistente)
-* [5. Instalacion de Nginx Proxy Manager](#5-instalacion-de-nginx-proxy-manager)
+* [5. Instalación de Nginx Proxy Manager](#5-instalación-de-nginx-proxy-manager)
 
 ### 1. Instalación de Docker y Herramientas
 
@@ -197,7 +197,7 @@ A continuación se detallan los puntos clave para asegurar el funcionamiento del
 | Cliente Local | 10.69.69.2 | IP reservada para el router o dispositivo local. |
 | Rango Local | 192.168.50.0/24 | Red detrás del CGNAT (ejemplo). |
 
-### 5. Instalacion de Ngnix Proxy Manager
+### 5. Instalación de Nginx Proxy Manager
 Ingresa a la siguiente ubicacion:
 
 ```bash
